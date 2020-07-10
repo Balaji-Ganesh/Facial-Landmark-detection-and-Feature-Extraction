@@ -1,0 +1,14 @@
+After testing on various images with different emotions, images, gender, age..we conclude that..
+	Dlib gave very good prediction of face features
+
+Issues:
+	1. For the lips:
+		for the neutral emotion, its quite fine.
+		But coming to the surprise, smile...
+			Its covering whole portion of mouth.
+
+Suggested Solutions:
+	1. Rather than creating the mask for the entire mouth, need to perform the mask individually for each upper and lower lip.
+		Then it may work...just guess please try and implement to know more issues and improvements.
+
+Updated these changes in version_2 and also arranged the code by modularity with our level best documentation for each function.

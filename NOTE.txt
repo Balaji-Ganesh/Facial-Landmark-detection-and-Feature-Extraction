@@ -1,0 +1,284 @@
+Solution_1:
+
+We tried installing the dlib library for the Python 3.7 version, but it didn't worked.
+ We've installed the python 3.6 version as there is already built version for python 3.6 not for python 3.7 
+Known from here: https://www.youtube.com/watch?v=HqjcqpCNiZg -------------------This worked
+
+
+Solution_2:
+Even tried with anaconda as:
+
+(base) C:\Users\lenovo>conda install -c conda-forge dlib=19.4
+Collecting package metadata (repodata.json): done
+Solving environment: failed with initial frozen solve. Retrying with flexible so
+lve.
+Solving environment: -
+Found conflicts! Looking for incompatible packages.
+This can take several minutes.  Press CTRL-C to abort.
+failed
+
+UnsatisfiableError: The following specifications were found
+to be incompatible with the existing python installation in your environment:
+
+Specifications:
+
+  - dlib=19.4 -> python[version='3.5.*|3.6.*']
+
+Your python: python=3.7
+
+If python is on the left-most side of the chain, that's the version you've asked
+ for.
+When python appears to the right, that indicates that the thing on the left is s
+omehow
+not available for the python version you are constrained to. Note that conda wil
+l not
+change your python version to a different minor version unless you explicitly sp
+ecify
+that.
+
+------------Even this didn't worked..
+
+
+
+Via Solution_1..
+	This worked, and even when tested import dlib....no errors..BUT..
+	When tried "dlib.get_frontal_face_detector()"
+	Getting this error:     
+							"faces_detector = dlib.get_frontal_face_detector()
+							AttributeError: module 'dlib' has no attribute 'get_frontal_face_detector'""
+	Found solution at: 
+	"https://stackoverflow.com/	questions/58286807/how-can-i-solve-error-of-installation-dlib/58624273?noredirect=1#comment103559129_58624273"
+
+	And tried.. 
+		Created a virtual environment named "dlib_test", it worked fine (tested eve like.. dlib.get_frontal_face_detector())
+		After that In PyCharm, Changed as:
+				Press Ctrl+Alt+s in Pycharm to open "Settings" window..
+				Goto project interpreter, Click the Gear button at top-right, and select "Add" in the popup menu that appears. 
+				Select "Conda Environment" from the left pane
+				Select the "Existing Environment" radio button.
+				In the droppdown menu of "Interpreter", select "C:\Users\lenove\.conda\envs\dlib_test\python.exe" ## After the envs\, type the name of the environment created, here we created environment named with "dlib_test".
+				Check the check box "Make available to all projects", if would like to make this available to other projects we do further without all this process again.
+				Then click on "OK" and "Apply" to apply the settings to the PyCharm project. 
+
+
+===============================================LOG of installing dlib and anacnda venv============================================
+
+(base) C:\Users\lenovo>conda create -n dlib_test python=3.7.0
+Collecting package metadata (repodata.json): done
+Solving environment: done
+
+## Package Plan ##
+
+  environment location: C:\Users\lenovo\.conda\envs\dlib_test
+
+  added / updated specs:
+    - python=3.7.0
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    certifi-2020.6.20          |           py37_0         160 KB
+    python-3.7.0               |       hea74fb7_0        21.1 MB
+    setuptools-47.3.1          |           py37_0         684 KB
+    vs2015_runtime-14.16.27012 |       hf0eaf9b_3         2.4 MB
+    ------------------------------------------------------------
+                                           Total:        24.3 MB
+
+The following NEW packages will be INSTALLED:
+
+  certifi            pkgs/main/win-64::certifi-2020.6.20-py37_0
+  pip                pkgs/main/win-64::pip-20.1.1-py37_1
+  python             pkgs/main/win-64::python-3.7.0-hea74fb7_0
+  setuptools         pkgs/main/win-64::setuptools-47.3.1-py37_0
+  vc                 pkgs/main/win-64::vc-14.1-h0510ff6_4
+  vs2015_runtime     pkgs/main/win-64::vs2015_runtime-14.16.27012-hf0eaf9b_3
+  wheel              pkgs/main/win-64::wheel-0.34.2-py37_0
+  wincertstore       pkgs/main/win-64::wincertstore-0.2-py37_0
+
+
+Proceed ([y]/n)? y
+
+
+Downloading and Extracting Packages
+vs2015_runtime-14.16 | 2.4 MB    | #################################### | 100%
+setuptools-47.3.1    | 684 KB    | #################################### | 100%
+python-3.7.0         | 21.1 MB   | #################################### | 100%
+certifi-2020.6.20    | 160 KB    | #################################### | 100%
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+#
+# To activate this environment, use
+#
+#     $ conda activate dlib_test
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate
+
+
+(base) C:\Users\lenovo>conda activate dlib_test
+
+(dlib_test) C:\Users\lenovo>conda install -c conda-forge dlib=19.17
+Collecting package metadata (repodata.json): done
+Solving environment: done
+
+## Package Plan ##
+
+  environment location: C:\Users\lenovo\.conda\envs\dlib_test
+
+  added / updated specs:
+    - dlib=19.17
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    certifi-2020.6.20          |   py37hc8dfbb8_0         151 KB  conda-forge
+    dlib-19.17                 |   py37h62bef1d_0         3.3 MB  conda-forge
+    jpeg-9d                    |       he774522_0         344 KB  conda-forge
+    libblas-3.8.0              |           16_mkl         3.6 MB  conda-forge
+    libcblas-3.8.0             |           16_mkl         3.6 MB  conda-forge
+    liblapack-3.8.0            |           16_mkl         3.6 MB  conda-forge
+    libpng-1.6.37              |       hfe6a214_1         1.4 MB  conda-forge
+    numpy-1.18.5               |   py37hae9e721_0         4.7 MB  conda-forge
+    zlib-1.2.11                |    h2fa13f4_1006         236 KB  conda-forge
+    ------------------------------------------------------------
+                                           Total:        20.8 MB
+
+The following NEW packages will be INSTALLED:
+
+  dlib               conda-forge/win-64::dlib-19.17-py37h62bef1d_0
+  intel-openmp       pkgs/main/win-64::intel-openmp-2020.1-216
+  jpeg               conda-forge/win-64::jpeg-9d-he774522_0
+  libblas            conda-forge/win-64::libblas-3.8.0-16_mkl
+  libcblas           conda-forge/win-64::libcblas-3.8.0-16_mkl
+  liblapack          conda-forge/win-64::liblapack-3.8.0-16_mkl
+  libpng             conda-forge/win-64::libpng-1.6.37-hfe6a214_1
+  mkl                pkgs/main/win-64::mkl-2020.1-216
+  numpy              conda-forge/win-64::numpy-1.18.5-py37hae9e721_0
+  python_abi         conda-forge/win-64::python_abi-3.7-1_cp37m
+  zlib               conda-forge/win-64::zlib-1.2.11-h2fa13f4_1006
+
+The following packages will be SUPERSEDED by a higher-priority channel:
+
+  certifi               pkgs/main::certifi-2020.6.20-py37_0 --> conda-forge::cer
+tifi-2020.6.20-py37hc8dfbb8_0
+
+
+Proceed ([y]/n)? y
+
+
+Downloading and Extracting Packages
+liblapack-3.8.0      | 3.6 MB    | #################################### | 100%
+numpy-1.18.5         | 4.7 MB    | #################################### | 100%
+libpng-1.6.37        | 1.4 MB    | #################################### | 100%
+dlib-19.17           | 3.3 MB    | #################################### | 100%
+certifi-2020.6.20    | 151 KB    | #################################### | 100%
+zlib-1.2.11          | 236 KB    | #################################### | 100%
+jpeg-9d              | 344 KB    | #################################### | 100%
+libblas-3.8.0        | 3.6 MB    | #################################### | 100%
+libcblas-3.8.0       | 3.6 MB    | #################################### | 100%
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+
+(dlib_test) C:\Users\lenovo>python
+Python 3.7.0 (default, Jun 28 2018, 08:04:48) [MSC v.1912 64 bit (AMD64)] :: Ana
+conda, Inc. on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import dlib
+>>> detector = dlib.get_frontal_face_detector()
+
+
+===================================================================================================================================
+
+==============================Log of installing opencv in anaconda========================
+(dlib_test) C:\Users\lenovo>conda install -c conda-forge opencv
+Collecting package metadata (repodata.json): done
+Solving environment: done
+
+## Package Plan ##
+
+  environment location: C:\Users\lenovo\.conda\envs\dlib_test
+
+  added / updated specs:
+    - opencv
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    ca-certificates-2020.6.20  |       hecda079_0         184 KB  conda-forge
+    freetype-2.10.2            |       hd328e21_0         490 KB  conda-forge
+    icu-64.2                   |       he025d50_1        14.1 MB  conda-forge
+    libclang-9.0.1             |default_hf44288c_0        20.8 MB  conda-forge
+    liblapacke-3.8.0           |           16_mkl         3.6 MB  conda-forge
+    libopencv-4.3.0            |           py37_2        45.2 MB  conda-forge
+    libtiff-4.1.0              |       h885aae3_6        1020 KB  conda-forge
+    libwebp-base-1.1.0         |       hfa6e2cd_3         356 KB  conda-forge
+    lz4-c-1.9.2                |       h62dcd97_1         280 KB  conda-forge
+    opencv-4.3.0               |           py37_2          20 KB  conda-forge
+    py-opencv-4.3.0            |   py37h43977f1_2          22 KB  conda-forge
+    qt-5.12.5                  |       h7ef1ec2_0       104.4 MB  conda-forge
+    sqlite-3.32.3              |       he774522_0         1.2 MB  conda-forge
+    xz-5.2.5                   |       h2fa13f4_0         891 KB  conda-forge
+    zstd-1.4.4                 |       h9f78265_3         1.1 MB  conda-forge
+    ------------------------------------------------------------
+                                           Total:       193.6 MB
+
+The following NEW packages will be INSTALLED:
+
+  ca-certificates    conda-forge/win-64::ca-certificates-2020.6.20-hecda079_0
+  freetype           conda-forge/win-64::freetype-2.10.2-hd328e21_0
+  icu                conda-forge/win-64::icu-64.2-he025d50_1
+  libclang           conda-forge/win-64::libclang-9.0.1-default_hf44288c_0
+  liblapacke         conda-forge/win-64::liblapacke-3.8.0-16_mkl
+  libopencv          conda-forge/win-64::libopencv-4.3.0-py37_2
+  libtiff            conda-forge/win-64::libtiff-4.1.0-h885aae3_6
+  libwebp-base       conda-forge/win-64::libwebp-base-1.1.0-hfa6e2cd_3
+  lz4-c              conda-forge/win-64::lz4-c-1.9.2-h62dcd97_1
+  opencv             conda-forge/win-64::opencv-4.3.0-py37_2
+  openssl            conda-forge/win-64::openssl-1.1.1g-he774522_0
+  py-opencv          conda-forge/win-64::py-opencv-4.3.0-py37h43977f1_2
+  qt                 conda-forge/win-64::qt-5.12.5-h7ef1ec2_0
+  sqlite             conda-forge/win-64::sqlite-3.32.3-he774522_0
+  xz                 conda-forge/win-64::xz-5.2.5-h2fa13f4_0
+  zstd               conda-forge/win-64::zstd-1.4.4-h9f78265_3
+
+
+Proceed ([y]/n)? y
+
+
+Downloading and Extracting Packages
+lz4-c-1.9.2          | 280 KB    | #################################### | 100%
+icu-64.2             | 14.1 MB   | #################################### | 100%
+sqlite-3.32.3        | 1.2 MB    | #################################### | 100%
+freetype-2.10.2      | 490 KB    | #################################### | 100%
+libwebp-base-1.1.0   | 356 KB    | #################################### | 100%
+opencv-4.3.0         | 20 KB     | #################################### | 100%
+zstd-1.4.4           | 1.1 MB    | #################################### | 100%
+libclang-9.0.1       | 20.8 MB   | #################################### | 100%
+liblapacke-3.8.0     | 3.6 MB    | #################################### | 100%
+py-opencv-4.3.0      | 22 KB     | #################################### | 100%
+libopencv-4.3.0      | 45.2 MB   | #################################### | 100%
+ca-certificates-2020 | 184 KB    | #################################### | 100%
+xz-5.2.5             | 891 KB    | #################################### | 100%
+qt-5.12.5            | 104.4 MB  | #################################### | 100%
+libtiff-4.1.0        | 1020 KB   | #################################### | 100%
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+
+(dlib_test) C:\Users\lenovo>
+
+
+
+===========================================================================================
+
+Further references: 
+http://dlib.net/compile.html  -- Installing by the Dlib developers itself
