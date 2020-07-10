@@ -16,4 +16,4 @@ Please don't use the resulant and source photos for any commercial purposes, the
 Davis King, without his work this experiment would be incomplete.
 https://github.com/davisking/
 
-## Please only use the code for learning purposes and not for any other purposes.
+## Please only use the code, resources and results for learning purposes and not for any other purposes.
